@@ -28,7 +28,8 @@ TFKISS jest emulatorem TNC.
 	--enable-xpid \
 	--enable-flexnet \
 	--enable-axip
-%{__make} CC="%{__cc} %{rpmcflags} -Wall"
+%{__make} \
+	CC="%{__cc} %{rpmcflags} -Wall"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -46,6 +47,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/alas.{eng,txt} doc/copyrght.txt doc/tfkiss.doc doc/rfc1226
 %doc CHANGES INSTALL README examples/tfkiss.cfg.smpl* examples/tfkiss.ini.smpl*
-%attr(755,root,root)%{_bindir}/tfkiss
+%attr(755,root,root) %{_bindir}/tfkiss
 %dir %attr(700,root,root) %{_sysconfdir}/ax25/tfkiss
-%attr(600,root,root)%{_sysconfdir}/ax25/tfkiss/*
+%attr(600,root,root) %{_sysconfdir}/ax25/tfkiss/*
