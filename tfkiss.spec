@@ -38,7 +38,7 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_sysconfdir}/ax25/tfkiss/examples,%{_doc
 install src/tfkiss $RPM_BUILD_ROOT%{_bindir}
 
 install {examples/tfkiss.cfg,examples/tfkiss.ini} \
-          $RPM_BUILD_ROOT%{_sysconfdir}/ax25/tfkiss
+	$RPM_BUILD_ROOT%{_sysconfdir}/ax25/tfkiss
 
 %clean
 rm -rf $RPM_BUILD_ROOT
