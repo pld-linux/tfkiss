@@ -6,7 +6,7 @@ Release:	1
 License:	GPL
 Group:		Networking/Utilities
 Source0:	ftp://ftp.wspse.de/packet_radio/misc/%{name}-%{version}.tar.gz
-Patch0:		http://zolw.eu.org/~djrzulf/PLD/patch/%{name}-configure.patch
+Patch0:		%{name}-configure.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	autoconf
 
@@ -18,11 +18,11 @@ TFKISS jest emulatorem TNC.
 
 %prep
 %setup -q
-%patch0 -p0
+%patch0 -p1
 
 %build
 %{__autoconf}
-%configure2_13 \
+%configure \
 	--enable-hibaud \
 	--enable-xpid \
 	--enable-flexnet \
@@ -33,20 +33,18 @@ TFKISS jest emulatorem TNC.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_sysconfdir}/ax25/tfkiss/examples,%{_docdir}/%{name}-%{version}}
 
-install src/tfkiss		$RPM_BUILD_ROOT%{_bindir}
+install src/tfkiss $RPM_BUILD_ROOT%{_bindir}
 
-install {examples/tfkiss.cfg,examples/tfkiss.ini} 	    $RPM_BUILD_ROOT%{_sysconfdir}/ax25/tfkiss
-
-gzip -9nf doc/alas.eng doc/alas.txt doc/copyrght.txt doc/tfkiss.doc doc/rfc1226 \
-	CHANGES INSTALL README examples/tfkiss.{cfg,ini}.smpl
+install {examples/tfkiss.cfg,examples/tfkiss.ini} \
+          $RPM_BUILD_ROOT%{_sysconfdir}/ax25/tfkiss
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/alas.eng* doc/alas.txt* doc/copyrght.txt* doc/tfkiss.doc* doc/rfc1226*
-%doc CHANGES* INSTALL* README* examples/tfkiss.cfg.smpl* examples/tfkiss.ini.smpl*
+%doc doc/alas.{eng,txt} doc/copyrght.txt doc/tfkiss.doc doc/rfc1226
+%doc CHANGES INSTALL README examples/tfkiss.cfg.smpl* examples/tfkiss.ini.smpl*
 %attr(755,root,root)%{_bindir}/tfkiss
 %dir %attr(700,root,root) %{_sysconfdir}/ax25/tfkiss
 %attr(600,root,root)%{_sysconfdir}/ax25/tfkiss/*
