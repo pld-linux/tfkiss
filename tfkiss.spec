@@ -26,7 +26,7 @@ autoconf
 	--enable-hibaud \
 	--enable-xpid \
 	--enable-flexnet \
-	--enable-axip		
+	--enable-axip
 %{__make} CC="%{__cc} %{rpmcflags} -Wall"
 
 %install
