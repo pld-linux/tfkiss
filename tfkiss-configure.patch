@@ -1,0 +1,71 @@
+*** configure.in	Mon Jul 12 16:56:55 1999
+--- configure.in.new	Thu Oct 25 14:10:25 2001
+***************
+*** 16,67 ****
+  	prefix=/usr/local
+  fi
+  
+! tfkiss_main_dir=${prefix}/tfkiss
+! tfkiss_work_dir=${prefix}/tfkiss
+! tfkiss_conf_dir=${prefix}/tfkiss
+! tfkiss_doc_dir=${prefix}/tfkiss/doc
+! tfkiss_log_dir=${prefix}/tfkiss
+! tfkiss_run_dir=${prefix}/tfkiss
+! 
+! case "$target" in
+! 	*-*-netbsd*)
+! 		AC_DEFINE(HAVE_CRTSCTS)
+! 		cfg=examples/netbsd.cfg
+! 		tfkiss_main_dir=${prefix}
+! 		tfkiss_work_dir=/var/spool/tfkiss
+! 		tfkiss_conf_dir=${prefix}/share/tfkiss/conf
+! 		tfkiss_doc_dir=${prefix}/share/tfkiss/doc
+! 		tfkiss_log_dir=/var/log
+! 		tfkiss_run_dir=/var/run
+! 	;;
+! 
+! 	*-*-linux*)
+! 		AC_DEFINE(HAVE_CRTSCTS)
+! 		cfg=examples/linux.cfg
+!                 tfkiss_main_dir=${prefix}
+!                 tfkiss_work_dir=/var/spool/tfkiss
+!                 tfkiss_conf_dir=${prefix}/share/tfkiss/conf
+!                 tfkiss_doc_dir=${prefix}/share/tfkiss/doc
+!                 tfkiss_log_dir=/var/log
+!                 tfkiss_run_dir=/var/run
+! 	;;
+! 
+! 	*-*-solaris*)
+! 		LIBS="$LIBS -lnsl -lsocket"
+! 		cfg=examples/solaris.cfg
+! 		tfkiss_main_dir=${prefix}/tfkiss
+! 		tfkiss_work_dir=${prefix}/tfkiss/work
+! 		tfkiss_conf_dir=${prefix}/tfkiss
+! 		tfkiss_doc_dir=${prefix}/tfkiss/doc
+! 		tfkiss_log_dir=${prefix}/tfkiss/work
+! 		tfkiss_run_dir=${prefix}/tfkiss/work/bin
+! 	;;
+! 
+! 	*)
+! 		AC_MSG_ERROR("$target is currently not supported")
+! 	;;
+! 
+! esac
+  
+  AC_SUBST_FILE(cfg)
+  AC_SUBST(tfkiss_main_dir)
+--- 16,29 ----
+  	prefix=/usr/local
+  fi
+  
+! AC_DEFINE(HAVE_CRTSCTS)
+! cfg=examples/linux.cfg
+! tfkiss_main_dir=${prefix}
+! tfkiss_work_dir=/var/spool/tfkiss
+! tfkiss_conf_dir=/etc/ax25/tfkiss
+! tfkiss_doc_dir=${prefix}/share/tfkiss/doc
+! tfkiss_log_dir=/var/log
+! tfkiss_run_dir=/var/run
+  
+  AC_SUBST_FILE(cfg)
+  AC_SUBST(tfkiss_main_dir)
