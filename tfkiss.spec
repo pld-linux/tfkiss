@@ -47,7 +47,7 @@ gzip -9nf $RPM_BUILD_ROOT%{_sysconfdir}/ax25/tfkiss/examples/*
 gzip -9nf $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/*
 
 %clean
-#rm -rf $RPM_BUILD_ROOT
+rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
