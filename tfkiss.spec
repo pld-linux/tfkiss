@@ -21,7 +21,7 @@ TFKISS jest emulatorem TNC.
 %patch0 -p0
 
 %build
-autoconf
+%{__autoconf}
 %configure2_13 \
 	--enable-hibaud \
 	--enable-xpid \
