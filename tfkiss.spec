@@ -8,8 +8,8 @@ Group:		Networking/Utilities
 Source0:	ftp://ftp.wspse.de/packet_radio/misc/%{name}-%{version}.tar.gz
 # Source0-md5:	80e9738f2b061d20011ea1d64f84b57a
 Patch0:		%{name}-configure.patch
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	autoconf
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 TFKISS is based on TheFirmware by NORD><LINK.
