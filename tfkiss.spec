@@ -30,7 +30,7 @@ autoconf
 	--enable-xpid \
 	--enable-flexnet \
 	--enable-axip		
-make
+%{__make} CC="gcc %{rpmcflags} -Wall"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -38,12 +38,10 @@ mkdir -p $RPM_BUILD_ROOT{%{_bindir},%{_sysconfdir}/ax25/tfkiss/examples,%{_docdi
 
 install src/tfkiss		$RPM_BUILD_ROOT%{_bindir}
 
-install examples/tfkiss.cfg	$RPM_BUILD_ROOT%{_sysconfdir}/ax25/tfkiss
-install examples/tfkiss.ini	$RPM_BUILD_ROOT%{_sysconfdir}/ax25/tfkiss
-install examples/tfkiss.cfg.smpl $RPM_BUILD_ROOT%{_sysconfdir}/ax25/tfkiss/examples
-install examples/tfkiss.ini.smpl $RPM_BUILD_ROOT%{_sysconfdir}/ax25/tfkiss/examples
+install {examples/tfkiss.cfg,examples/tfkiss.ini} 	    $RPM_BUILD_ROOT%{_sysconfdir}/ax25/tfkiss
+install {examples/tfkiss.cfg.smpl,examples/tfkiss.ini.smpl} $RPM_BUILD_ROOT%{_sysconfdir}/ax25/tfkiss/examples
 
-install {doc/alas.eng,doc/alas.txt,doc/copyrght.txt,doc/tfkiss.doc,CHANGES,INSTALL,README} $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
+install {doc/alas.eng,doc/alas.txt,doc/copyrght.txt,doc/tfkiss.doc,doc/rfc1226,CHANGES,INSTALL,README} $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
 
 gzip -9nf $RPM_BUILD_ROOT%{_sysconfdir}/ax25/tfkiss/examples/*
 gzip -9nf $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/*
