@@ -1,5 +1,5 @@
 Summary:	TheFirmware TNC Software Emulator
-Summary(pl):	Emulator TNC
+Summary(pl.UTF-8):   Emulator TNC
 Name:		tfkiss
 Version:	1.2.4
 Release:	1
@@ -14,7 +14,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 TFKISS is based on TheFirmware by NORD><LINK.
 
-%description -l pl
+%description -l pl.UTF-8
 TFKISS jest emulatorem TNC.
 
 %prep
