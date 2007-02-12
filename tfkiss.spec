@@ -1,5 +1,5 @@
 Summary:	TheFirmware TNC Software Emulator
-Summary(pl.UTF-8):   Emulator TNC
+Summary(pl.UTF-8):	Emulator TNC
 Name:		tfkiss
 Version:	1.2.4
 Release:	1
